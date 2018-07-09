@@ -1,0 +1,2 @@
+Initialise i=0
+Initialise int k=10
