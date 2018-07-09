@@ -41,7 +41,7 @@ def get_code(filename):
 					line_of_code += line_elem[i]
 					break;
 				line_of_code += line_elem[i] + " "
-			line_of_code += "\");"
+			line_of_code += "\\n\");"
 
 		elif(("while" in line_elem)):
 			line = line.replace("\n","")
