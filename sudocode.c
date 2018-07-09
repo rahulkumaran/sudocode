@@ -29,5 +29,5 @@ int main()
 		printf("everywhere\n");
 		i++;
 	}
-	printf("It's over mama");
+	printf("It's over mama\n");
 }
