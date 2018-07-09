@@ -1,5 +1,5 @@
-from app import get_code
-from cleaner import code_cleaner
+from libs.sudocode import get_code
+from libs.cleaner import code_cleaner
 
 if(__name__=='__main__'):
 	
