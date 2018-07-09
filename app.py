@@ -13,10 +13,8 @@ if(__name__=='__main__'):
 		print("For" in line_elem)
 		line_of_code = ""
 		if(("Initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
-			print(no)
 			line_of_code += "float " + line_elem[1]  + ";"
 		if(("Initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
-			print(no)
 			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
 
 		if(("For" in line_elem) and ("gap" not in line_elem)):
@@ -26,10 +24,8 @@ if(__name__=='__main__'):
 			else:
 				line_of_code += "for(int " + line_elem[2] + "; " + line_elem[2][0] + " >= " + line_elem[4] + "; " + line_elem[2][1] + "--)\n{"
 				print(line_of_code)
-
 		
 		if("Endfor" in line):
-				print(no)
 				line_of_code += "}"
 
 		if("Print" in line):
