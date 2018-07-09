@@ -1,5 +1,23 @@
 Initialise i=0
-Initialise int k=10
+Initialise int k=100
 For int i=0 to 10
-Print hey dude
+Print hey dude\n
+k++
+k+=100
 Endfor
+For int i=0 to 10 and gap =2
+While i<=5
+Print in loop 1\n
+Print wooho\n
+i++
+Endwhile
+Print success\n
+k++
+Endfor
+While i<=10
+Print here\n
+Print there\n
+Print everywhere\n
+i++
+Endwhile
+Print It's over mama
