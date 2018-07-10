@@ -1,3 +1,11 @@
+function test returns int with args int a, int b, int c
+print test func
+a++
+b++
+c++
+endfunction
+
+start
 Initialise i=0
 Initialise int k=100
 For int i=0 to 10
