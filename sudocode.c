@@ -1,8 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int test(int a,,int b,,int c)
+{
+	printf("test func\n");
+	a++;
+	b++;
+	c++;
+	return int;
+}
+
 int main()
 {
+	
 	float i=0;
 	int k=100;
 	for(int i=0; i <= 10; i++)
