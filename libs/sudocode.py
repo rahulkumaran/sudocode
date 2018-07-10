@@ -1,18 +1,24 @@
 def get_code(filename):
+	return_list = []
 	file_ptr = open(filename, "r")
 	code_file_ptr = open(filename[0:len(filename)-4]+".c", "w")
-	code_file_ptr.write("#include <stdio.h>\n#include <stdlib.h>\n\nint main()\n{\n")
+	code_file_ptr.write("#include <stdio.h>\n#include <stdlib.h>\n\n")
 	no = 0
 	for line in file_ptr:
 		no+=1
 		line_elem = line.split(" ")
 		line_elem[-1] = line_elem[-1].replace("\n","")
 		line_elem[0] = line_elem[0].lower()
-		print(line_elem[0])
+		print("\"",line_elem[0],"\"")
 		#print("gap" in line_elem)
 		line_of_code = ""
-		if(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
+
+		if("start" in line_elem):
+			line_of_code +="int main()\n{\n"
+
+		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
 			line_of_code += "float " + line_elem[1]  + ";"
+
 		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
 			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
 
@@ -44,10 +50,35 @@ def get_code(filename):
 			line_of_code += "\\n\");"
 
 		elif(("while" in line_elem)):
-			line = line.replace("\n","")
 			line_of_code += "while(" + line_elem[-1] + ")\n{"
 
 
+		elif("function" in line_elem):
+			return_list = line_elem
+			temp = []
+			line = line.replace(",","")
+			line_of_code += line_elem[3] + " " + line_elem[1] + "("
+			index_arg = line_elem.index("args")
+			print(line_of_code)
+			for i in range(index_arg+1,len(line_elem), 2):
+				if(i+1 == len(line_elem)-1):
+					line_of_code += line_elem[i] + " " + line_elem[i+1] + ")\n{"
+					break
+				line_of_code += line_elem[i] + " " + line_elem[i+1] + ","
+
+			'''temp = list(line_of_code)
+			temp[-1] = ")\n{"
+			line_of_code = "".join(temp)'''
+
+			
+
+		elif("endfunction" in line_elem):
+			line_of_code = "return " + return_list[3] + ";\n}"
+			return_list = []
+
+		elif("" == line_elem[0]):
+			code_file_ptr.write("\n")
+			continue
 		else:
 			line = line.replace("\n","")
 			line_of_code += line + ";"
