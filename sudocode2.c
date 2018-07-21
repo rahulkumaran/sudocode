@@ -17,9 +17,9 @@ int main()
 	float b=10;
 	float summ;
 	summ=a+b;
-	for(int i=10; i <= 1; i++)
+	for(int i=10; i >= 1; i-=2)
 	{
-		printf("i\n");
+		printf("%d\n",i);
 	}
-	printf("summ\n");
+	printf("%f\n",summ);
 }
