@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int test(int a,,int b,,int c)
+int test(int a,int b,int c)
 {
 	printf("test func\n");
 	a++;
