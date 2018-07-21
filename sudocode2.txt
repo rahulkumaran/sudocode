@@ -10,7 +10,7 @@ a=120
 initialise float b=10
 initialise summ
 summ=a+b
-for int i=10 to 1
+for int i=10 to 1 and gap =2
 print i
 endfor
 print summ
