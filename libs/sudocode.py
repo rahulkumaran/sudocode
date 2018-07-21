@@ -49,14 +49,14 @@ def get_code(filename):
 				line_of_code += line_elem[i] + " "
 			line_of_code += "\\n\");"
 
-		elif(("while" in line_elem)):
+		elif("while" in line_elem):
 			line_of_code += "while(" + line_elem[-1] + ")\n{"
 
 
 		elif("function" in line_elem):
 			return_list = line_elem
 			temp = []
-			line = line.replace(",","")
+			print(line_elem)
 			line_of_code += line_elem[3] + " " + line_elem[1] + "("
 			index_arg = line_elem.index("args")
 			print(line_of_code)
@@ -64,6 +64,7 @@ def get_code(filename):
 				if(i+1 == len(line_elem)-1):
 					line_of_code += line_elem[i] + " " + line_elem[i+1] + ")\n{"
 					break
+				line_elem[i+1] = line_elem[i+1].replace(",","")
 				line_of_code += line_elem[i] + " " + line_elem[i+1] + ","
 
 			'''temp = list(line_of_code)
@@ -73,7 +74,7 @@ def get_code(filename):
 			
 
 		elif("endfunction" in line_elem):
-			line_of_code = "return " + return_list[3] + ";\n}"
+			line_of_code = "return sad" +  ";\n}"
 			return_list = []
 
 		elif("" == line_elem[0]):
