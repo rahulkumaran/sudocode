@@ -7,7 +7,9 @@ int test(int a,int b,int c)
 	a++;
 	b++;
 	c++;
-	return int;
+	a = b + c;
+	return a;
+	
 }
 
 int main()

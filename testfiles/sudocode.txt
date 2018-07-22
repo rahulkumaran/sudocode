@@ -3,6 +3,8 @@ print test func
 a++
 b++
 c++
+a = b + c
+return a
 endfunction
 
 start
