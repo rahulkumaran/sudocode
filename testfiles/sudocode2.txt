@@ -2,6 +2,7 @@ function test_2 returns int with args int a, int b, int sad
 a=0
 b=a
 sad=b
+return sad
 endfunction
 
 start
