@@ -102,7 +102,6 @@ def get_code(filename):
 			temp[-1] = ")\n{"
 			line_of_code = "".join(temp)'''
 
-			
 
 		elif(("return" in line_elem) and ("print" not in line_elem)):
 			line_of_code = "return"
@@ -146,25 +145,6 @@ def get_code(filename):
 	code_file_ptr.close()
 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
