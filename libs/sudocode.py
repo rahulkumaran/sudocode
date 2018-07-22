@@ -1,6 +1,7 @@
 def get_code(filename):
 	return_list = []
 	variables = []
+	funcs = []
 	func_args = 0
 	file_ptr = open(filename, "r")
 	code_file_ptr = open(filename[0:len(filename)-4]+".c", "w")
@@ -51,12 +52,6 @@ def get_code(filename):
 				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " >= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "-=" + (line_elem[-1].split("="))[-1] + ")\n{"
 
 
-
-		elif(("endfor" in line_elem) or ("endwhile" in line_elem)):
-			line_of_code += "}"
-			variables.pop()
-			variables.pop()
-
 		elif("print" in line_elem):
 			line_of_code += "printf(\""
 			for i in range(1,len(line_elem)):
@@ -70,7 +65,7 @@ def get_code(filename):
 					break
 				else:
 					if(i==len(line_elem)-1):
-						line_of_code += line_elem[i] + "\""
+						line_of_code += line_elem[i] + "\\n\""
 						break;
 					line_of_code += line_elem[i] + " "
 			line_of_code += ");"
@@ -79,7 +74,15 @@ def get_code(filename):
 			line_of_code += "while(" + line_elem[-1] + ")\n{"
 
 
+		elif(("endfor" in line_elem) or ("endwhile" in line_elem)):
+			line_of_code += "}"
+			if("endfor" in line_elem):
+				variables.pop()
+				variables.pop()
+
+
 		elif("function" in line_elem):
+			funcs.append(line_elem[1])
 			return_list = line_elem
 			temp = []
 			#print(line_elem)
@@ -96,7 +99,8 @@ def get_code(filename):
 				line_elem[i+1] = line_elem[i+1].replace(",","")
 				line_of_code += line_elem[i] + " " + line_elem[i+1] + ","
 
-			print(func_args)
+			#print(func_args)
+			funcs.append(func_args)
 
 			'''temp = list(line_of_code)
 			temp[-1] = ")\n{"
@@ -105,15 +109,15 @@ def get_code(filename):
 
 		elif(("return" in line_elem) and ("print" not in line_elem)):
 			line_of_code = "return"
+			for i in range(1,len(variables),2):
+				variables[i] = (variables[i].split(","))[0]
 			if(line_elem[1] in variables):
 				index_return = variables.index(line_elem[1])
 				if(variables[index_return-1] == return_list[3]):
 					line_of_code += " " + variables[index_return]
 				else:
 					raise("the return type in function definition and variable type of returned value don't match!")
-			line_of_code += ";\n}"
-
-
+			line_of_code += ";\n"
 
 
 		elif("endfunction" in line_elem):
@@ -122,7 +126,24 @@ def get_code(filename):
 				variables.pop()
 				variables.pop()
 				i += 1
+			line_of_code += "}"
 			return_list = []
+
+		elif("call" in line_elem):
+			num_values = 0
+			if(line_elem[1] in funcs):
+				line_of_code += line_elem[1] + "("
+				index_num_args = funcs.index(line_elem[1]) + 1
+				index_values = line_elem.index("values")
+				
+				for i in range(index_values+1,len(line_elem)):
+					num_values += 1
+					if(i == len(line_elem)-1):
+						line_of_code += line_elem[i] + ");"
+						break
+					line_elem[i] = line_elem[i].replace(",","")
+					line_of_code += line_elem[i] + ","
+			print(num_values)
 
 		elif("" == line_elem[0]):
 			code_file_ptr.write("\n")
@@ -134,12 +155,18 @@ def get_code(filename):
 		code_file_ptr.write(line_of_code+'\n')
 
 		print(variables)
+		print(funcs)
 
 	while(len(variables)>0):
 		variables.pop()
 
+	while(len(funcs)>0):
+		funcs.pop()
+
+
 	print(variables)
 
+	print(funcs)
 	code_file_ptr.write("}")
 
 	code_file_ptr.close()
