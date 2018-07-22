@@ -18,6 +18,7 @@ int main()
 	float b=10;
 	float summ;
 	summ=a+b;
+	test_2(2,3,4);
 	for(int i=10; i >= 1; i-=2)
 	{
 		printf("%d\n",i);
