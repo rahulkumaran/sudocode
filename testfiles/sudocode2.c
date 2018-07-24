@@ -7,8 +7,8 @@ int test_2(int a,int b,int sad)
 	b=a;
 	sad=b;
 	return sad;
+	
 }
-
 
 int main()
 {
