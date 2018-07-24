@@ -8,6 +8,7 @@ It's a fairly simple project and does not involve any Machine Learning, but yes,
 But for now, it's going to be just some code written with some common sense to help achieve this.<br>
 
 <h2>Possible Functionalities That Can Be Performed</h2>
+
 - For loop
 - While loop
 - Function  definition
@@ -16,6 +17,7 @@ But for now, it's going to be just some code written with some common sense to h
 - Initialising variables
 - Basic increment and decrement statements
 
-<b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br> 
-The rules to be followed while writing pseudocode are as follows: <br>
+<b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br>
+
+<h2>Rules To Be Followed While Writing Pseudocode</h2>
 
