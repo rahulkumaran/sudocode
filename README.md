@@ -21,6 +21,9 @@ But for now, it's going to be just some code written with some common sense to h
 
 <h2>Rules To Be Followed While Writing Pseudocode</h2>
 
+![](https://media.giphy.com/media/3oxHQBuKWs2RuAwY5q/giphy.gif)
+
+
 - <h3>Starting main body</h3>
 To start the code that's to be entered in the main body you need to start off with the word `start`
 
