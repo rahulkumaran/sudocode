@@ -34,12 +34,27 @@ Follow the following format:
 Both the examples above are valid.<br>
 Mentioning the type is optional. Incase you don't mention the type, the default type of the variable is float.
 
+- <h3>Print</h3>
+`Print` helps you print things on console. It could be statements or variables.<br>
+The best part about this application is that it understands whether you want to print a string or a variable.<br>
+The only drawback here being that, you can print only one particular variable in one print statement for now.<br>
+Let's see how it works!
+
+        print <statement_or_variable to be printed>
+        
+        EXAMPLE: (1) print hey there
+                 (2) print inside loop now
+                 (3) Let's assume there's a variable "temp" in the main body, then
+                     print temp
+
+The last statement says print temp. Here, the application understands that temp means the variable temp and not the string temp to be printed. It also understands whether the variable mentioned is an integer or a float value and accordingly mentions the format specifier in C and C++.<br>
+
 - <h3>For Loops</h3>
 Incase you want utilise the functionality of for loops, you can do it in the following manner:
 
         for int <var_name>=<start_value> to <stop_value>
         
-        Example: (1) for int i=0 to 10
+        EXAMPLE: (1) for int i=0 to 10
                      -------
                      -------
                      endfor
@@ -63,7 +78,7 @@ If that's the case, don't worry, we have provision for that as well. Follow the 
                      -------
                      endfor
 
-You need not mention a negative gap as the application understands that it's supposed to give a negative gap.
+You need not mention a negative gap as the application understands that it's supposed to give a negative gap.<br>
 
 Now, an example of a loop:
 
