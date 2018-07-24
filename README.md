@@ -92,7 +92,30 @@ Now, an example of a loop:
         endfor
         
 Here, the application understands that the program is supposed to print `i` as a variable and hence it print the value of `i` and not just `i` as it is.
- 
+
+- <h3>While Loops</h3>
+While loops can also be generated in this application. To utlilise the feature of while loops, follow the format:
+
+	while <condition>
+	-----
+	-----
+	endwhile
+
+	EXAMPLE: (1) while i<=10
+		     print i
+		     i++
+		     endwhile
+		 (2) initialise int temp=110
+		     while temp>=100
+		     print temp
+		     temp--
+		     endwhile
+
+As you can see above, `endwhile` is used at the end of the while loop.<br>
+So basically, you can enter any statement or code in while loop, just that it should end with an `endwhile`.<br>
+
+
+
 - <h3>Functions</h3>
 To define a function that has n arguments, you can follow the following format:
 
