@@ -31,7 +31,7 @@ def get_code(filename):
 			line_elem[2] = (line_elem[2].split("="))[0]
 			variables.append(line_elem[2])
 
-		elif(("for" in line_elem) and ("gap" not in line_elem)):
+		elif(("for" in line_elem) and ("gap" not in (line_elem[-1].split("="))[0])):
 			#print(line_elem[2][-1], line_elem[4])
 			start_for = (line_elem[2].split("="))[-1]
 			variables.append("int")
@@ -42,7 +42,7 @@ def get_code(filename):
 				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " >= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "--)\n{"
 
 
-		elif(("for" in line_elem) and ("gap" in line_elem)):
+		elif(("for" in line_elem) and ("gap" in (line_elem[-1].split("="))[0])):
 			start_for = (line_elem[2].split("="))[-1]
 			variables.append("int")
 			variables.append((line_elem[2].split("="))[0])
