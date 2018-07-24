@@ -9,6 +9,8 @@ But for now, it's going to be just some code written with some common sense to h
 
 <h2>Possible Functionalities That Can Be Performed</h2>
 
+![](https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif)
+
 - For loop
 - While loop
 - Function  definition
