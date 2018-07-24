@@ -34,6 +34,45 @@ Follow the following format:
 Both the examples above are valid.<br>
 Mentioning the type is optional. Incase you don't mention the type, the default type of the variable is float.
 
+- <h3>For Loops</h3>
+Incase you want utilise the functionality of for loops, you can do it in the following manner:
+
+        for int <var_name>=<start_value> to <stop_value>
+        
+        Example: (1) for int i=0 to 10
+                     -------
+                     -------
+                     endfor
+                 (2) for int i=50 to 10
+                     -------
+                     -------
+                     endfor
+`endfor` is used at the end of the for loop. As, you can see above, you can loop from a higher to a lower value and also the other way round.<br>
+Also, the ----- can be filled with statements or operations that you want to perform within the for loop.<br>
+By default, the increment and decrement in the loop is 1. Sometimes you might want to increment or decrement the looping variable by a value greater than 1. <br>
+If that's the case, don't worry, we have provision for that as well. Follow the following steps:<br> 
+
+        for int <var_name>=<start_value> to <stop_value> with gap=<gap_size>
+        
+        Example: (1) for int i=0 to 60 with gap=3
+                     -------
+                     -------
+                     endfor
+                 (2) for int i=60 to 10 with gap=3
+                     -------
+                     -------
+                     endfor
+
+You need not mention a negative gap as the application understands that it's supposed to give a negative gap.
+
+Now, an example of a loop:
+
+        for int i=10 to 1 and gap=2
+        print i
+        endfor
+        
+Here, the application understands that the program is supposed to print `i` as a variable and hence it print the value of `i` and not just `i` as it is.
+ 
 - <h3>Functions</h3>
 To define a function that has n arguments, you can follow the following format:
 
