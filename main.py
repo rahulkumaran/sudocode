@@ -3,7 +3,7 @@ from libs.cleaner import code_cleaner, code_execute
 
 if(__name__=='__main__'):
 	
-	filename = "testfiles/sudocode.txt"
+	filename = "testfiles/sudocode2.txt"
 
 	get_code(filename)
 
