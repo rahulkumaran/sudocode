@@ -167,10 +167,10 @@ def get_code(filename):
 	print(variables)
 
 	print(funcs)
-	code_file_ptr.write("}")
+	code_file_ptr.write("}")	#ending the code with a last }
 
-	code_file_ptr.close()	#closing file ptr.
-
+	code_file_ptr.close()	#closing code file ptr.
+	file_ptr.close()	#closing file ptr 
 	
 
 
