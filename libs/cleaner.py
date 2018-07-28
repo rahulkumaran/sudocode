@@ -1,6 +1,7 @@
 import os
 import subprocess
 
+#print(__name__)
 
 def code_cleaner(filename):
 	try:
