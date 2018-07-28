@@ -1,3 +1,5 @@
+#print(__name__)
+
 def get_code(filename):
 	return_list = []		#stores the last defined function details to get return statement accordingly.
 	variables = []			#Stores the list of all variables
@@ -130,7 +132,8 @@ def get_code(filename):
 
 		elif("endfunction" in line_elem):	#endfunction keyword check
 			i=1
-			while(i<=func_args):	#popping out all function arg vars
+			var_len = len(variables)/2
+			while(i<=var_len):	#popping out all function arg vars
 				variables.pop()
 				variables.pop()
 				i += 1
@@ -151,7 +154,7 @@ def get_code(filename):
 						break
 					line_elem[i] = line_elem[i].replace(",","")
 					line_of_code += line_elem[i] + ","
-			print(num_values)
+			#print(num_values)
 
 		elif("" == line_elem[0]):	#if nothing exists then leave line
 			code_file_ptr.write("\n")
@@ -162,8 +165,8 @@ def get_code(filename):
 
 		code_file_ptr.write(line_of_code+'\n')	#writing line of code into file
 
-		print(variables)
-		print(funcs)
+		#print(variables)
+		#print(funcs)
 
 	while(len(variables)>0):	#popping out all variables type and name
 		variables.pop()
@@ -172,9 +175,9 @@ def get_code(filename):
 		funcs.pop()
 
 
-	print(variables)
+	#print(variables)
 
-	print(funcs)
+	#print(funcs)
 	code_file_ptr.write("}")	#ending the code with a last }
 
 	code_file_ptr.close()	#closing code file ptr.
