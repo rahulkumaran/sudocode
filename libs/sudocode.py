@@ -52,6 +52,17 @@ def get_code(filename):
 				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " >= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "-=" + (line_elem[-1].split("="))[-1] + ")\n{"
 
 
+		elif("while" in line_elem):	#check if while loop implementation
+			line_of_code += "while(" + line_elem[-1] + ")\n{"	#condition added in while
+
+
+		elif(("endfor" in line_elem) or ("endwhile" in line_elem)):	#checking if for or while loop is ending
+			line_of_code += "}"
+			if("endfor" in line_elem):	#if for loop ending, pop out last 2 values as they are temp var type and name
+				variables.pop()
+				variables.pop()
+
+
 		elif("print" in line_elem):		#print function implementation
 			line_of_code += "printf(\""
 			for i in range(1,len(line_elem)):	#getting each word to be printed
@@ -69,16 +80,6 @@ def get_code(filename):
 						break
 					line_of_code += line_elem[i] + " "	#spacing need for each word
 			line_of_code += ");"
-
-		elif("while" in line_elem):	#check if while loop implementation
-			line_of_code += "while(" + line_elem[-1] + ")\n{"	#condition added in while
-
-
-		elif(("endfor" in line_elem) or ("endwhile" in line_elem)):	#checking if for or while loop is ending
-			line_of_code += "}"
-			if("endfor" in line_elem):	#if for loop ending, pop out last 2 values as they are temp var type and name
-				variables.pop()
-				variables.pop()
 
 
 		elif("function" in line_elem):		#check for functions part
