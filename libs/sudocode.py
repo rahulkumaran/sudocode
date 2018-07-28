@@ -62,6 +62,13 @@ def get_code(filename):
 				variables.pop()
 				variables.pop()
 
+		elif(("if" in line_elem)):
+			line_of_code += "if(" + line_elem[1]+ ")\n{"
+		elif("else" in line_elem):
+			line_of_code += "}\nelse\n{"
+
+		elif("fi" in line_elem):
+			line_of_code += "}"
 
 		elif("print" in line_elem):		#print function implementation
 			line_of_code += "printf(\""
