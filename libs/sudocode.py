@@ -1,5 +1,73 @@
 #print(__name__)
 
+
+def variable_line(line_elem):
+		
+		''' Uncomment to test the function 
+		
+		line_elem = line_elem.split(" ")	#tokenisation at space
+		line_elem[-1] = line_elem[-1].replace("\n","")	#replacing new line char with null char
+		line_elem[0] = line_elem[0].lower()	
+		line_elem=list(filter(lambda x: x!='', line_elem))
+		'''
+
+		elem_no=0               #the index of the word in the line we are probing
+		var_type="" 			#the type of variable
+		var_value=''			#the value of variable
+		var_identifier=""		#variable indentifier
+		if(line_elem[elem_no] in ["int", "float", "char"]): #check if there is a type specified
+			var_type=line_elem[elem_no] #assign the type
+			elem_no+=1					#increment elem_no i.e. to probe the next element
+			if(var_type=="int"):
+				var_value="0"
+			elif(var_type=="float"):
+				var_value="0.0"
+			else:
+				var_value="\'\'"		#Assigning default values in case no defined value is found
+
+		else: 							#check if the data type is alpha or numeric
+			if(line_elem[-1][-1]=='\''):
+				var_type="char"
+				var_value="\'\'"
+			else:
+				var_type="float"
+				var_value="0.0"
+
+
+		#if there is an equal to, separate the identifier and value
+		
+		#CASES TO BE DEALT WITH:
+		#	<indentifier><equal to><value>
+		#	<identifier><space><equal to><value>
+		#	<identifier><space><equal to><space><value>
+		#	<identifier><equal to><space><value>
+			
+		
+		
+		if('=' in line_elem[elem_no]):   
+			pos=line_elem[elem_no].find("=")
+			var_identifier=line_elem[elem_no][0:pos]
+			line_elem[elem_no]=line_elem[elem_no][pos:]
+
+		else:
+			var_identifier=line_elem[elem_no]
+			elem_no+=1
+
+		#print(len(line_elem))
+
+		#checking if there is a value assigned or not. If it is assign it.
+
+		if(elem_no<len(line_elem)):
+			if(line_elem[elem_no]=="="):
+				var_value=line_elem[elem_no+1]
+
+			elif (line_elem[elem_no][0]=="="):
+				var_value=line_elem[elem_no][1:]
+
+		return (var_type, var_identifier, var_value)
+
+
+
 def get_code(filename):
 	return_list = []		#stores the last defined function details to get return statement accordingly.
 	variables = []			#Stores the list of all variables
@@ -9,11 +77,20 @@ def get_code(filename):
 	code_file_ptr = open(filename[0:len(filename)-4]+".c", "w")
 	code_file_ptr.write("#include <stdio.h>\n#include <stdlib.h>\n\n")
 	no = 0
+	
+	
+
+
+
+
+
 	for line in file_ptr:		#going through every line
+
 		no+=1		#incrementing line count
 		line_elem = line.split(" ")	#tokenisation at space
 		line_elem[-1] = line_elem[-1].replace("\n","")	#replacing new line char with null char
 		line_elem[0] = line_elem[0].lower()	#converting the first word in list_elem to all lower case letters
+		
 		#print("\"",line_elem[0],"\"")
 		#print("gap" in line_elem)
 		line_of_code = ""	#initialising var to get the final line of code to be inserted in file
@@ -21,18 +98,30 @@ def get_code(filename):
 		if("start" in line_elem):		#start keyword starts main function
 			line_of_code +="int main()\n{\n"
 
-		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
-			line_of_code += "float " + line_elem[1]  + ";"	#default type is float
-			variables.append("float")		#storing var type in stack
-			line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
-			variables.append(line_elem[1])		#pushing var name into variables stack
+		elif "initialise" in line_elem:
 
-		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
-			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
-			variables.append(line_elem[1])		#storing var type in stack
-			line_elem[2] = (line_elem[2].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
-			variables.append(line_elem[2])		#pushing var name into variables stack
+			line_elem=list(filter(lambda x: x!='', line_elem)) #filter out excessive spaces
+			var_type, var_identifier, var_value=variable_line(line_elem[1:]) #send the line to function except the word 'initialise' as it has been processed once
+			
+			variables.append(var_type)
+			variables.append(var_identifier)
+			line_of_code=var_type+" "+var_identifier+"="+var_value
+			'''
+			elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
+				line_of_code += "float " + line_elem[1]  + ";"	#default type is float
+				variables.append("float")		#storing var type in stack
+				line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
+				variables.append(line_elem[1])		#pushing var name into variables stack
 
+			elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
+				line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
+				variables.append(line_elem[1])		#storing var type in stack
+
+				#spacing issues
+
+				line_elem[2] = (line_elem[2].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
+				variables.append(line_elem[2])		#pushing var name into variables stack
+			'''
 		elif(("for" in line_elem) and ("gap" not in (line_elem[-1].split("="))[0])):	#by default gap is 1 and since gap is not in line_elem, it'll be considered at 1 only.
 			#print(line_elem[2][-1], line_elem[4])
 			start_for = (line_elem[2].split("="))[-1]	#tokenising at = to understand what the start value is
@@ -182,9 +271,18 @@ def get_code(filename):
 
 	code_file_ptr.close()	#closing code file ptr.
 	file_ptr.close()	#closing file ptr 
-	
 
+''' Testing
 
+print(variable_line("x='A'"))
+print(variable_line("x"))
+print(variable_line("char a='a'"))
+print(variable_line("int x =312"))
+print(variable_line("int x= 312"))
+print(variable_line("int x = 312"))
+print(variable_line("int  x   =    312"))
+print(variable_line("int x=123"))
+'''
 
 
 
