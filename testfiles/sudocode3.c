@@ -16,6 +16,7 @@ int main()
 	
 	float a=10;
 	float hi=20;
+	char c='a';
 	printf("%f\n",hi);
 	test_3(0,10,10);
 	for(int i=0; i <= 10; i++)
@@ -26,7 +27,7 @@ int main()
 		}
 		else
 		{
-			printf("not even\n");
+			continue;
 		}
 	}
 }

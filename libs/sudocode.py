@@ -9,6 +9,8 @@ def get_code(filename):
 	code_file_ptr = open(filename[0:len(filename)-4]+".c", "w")
 	code_file_ptr.write("#include <stdio.h>\n#include <stdlib.h>\n\n")
 	no = 0
+	line_num_of_current_for = 0
+	line_num_of_current_while = 0
 	for line in file_ptr:		#going through every line
 		no+=1		#incrementing line count
 		line_elem = line.split(" ")	#tokenisation at space
@@ -21,14 +23,17 @@ def get_code(filename):
 		if("start" in line_elem):		#start keyword starts main function
 			line_of_code +="int main()\n{\n"
 
-		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
+		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem) and("char" not in line_elem)):
 			line_of_code += "float " + line_elem[1]  + ";"	#default type is float
 			variables.append("float")		#storing var type in stack
 			line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
 			variables.append(line_elem[1])		#pushing var name into variables stack
 
-		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
-			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
+		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem) or ("char" in line_elem))):
+			if("char" in line_elem):
+				line_of_code += line_elem[1] + " " + line_elem[2].split("=")[0] + "=" + str(line_elem[2].split("=")[1]) + ";"
+			else:
+				line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
 			variables.append(line_elem[1])		#storing var type in stack
 			line_elem[2] = (line_elem[2].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
 			variables.append(line_elem[2])		#pushing var name into variables stack
@@ -53,7 +58,10 @@ def get_code(filename):
 			else:
 				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " >= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "-=" + (line_elem[-1].split("="))[-1] + ")\n{"
 
-
+		elif("break" in line_elem):
+			line_of_code += "break;"
+		elif("continue" in line_elem):
+			line_of_code += "continue;"
 		elif("while" in line_elem):	#check if while loop implementation
 			line_of_code += "while(" + line_elem[-1] + ")\n{"	#condition added in while
 
