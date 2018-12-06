@@ -12,7 +12,7 @@ What changes you have done, please  checkout  the boxes that apply
 - [ ] Added new feature
 
 ## Summary of Changes
- Please describe the changes you have made, be as descriptive as you can.
+ Please describe the changes you have made, be as descriptive as you can
 ...
 
 
