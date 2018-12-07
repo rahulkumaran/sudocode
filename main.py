@@ -1,4 +1,4 @@
-from libs.sudocode import get_code
+from libs.sudocode_c import get_code
 from libs.cleaner import code_cleaner, code_execute
 import sys
 
@@ -19,6 +19,7 @@ if(len(sys.argv) is 2):
 elif(len(sys.argv) is 1):
 	print("Error : Too few arguments")
 	print("Try typing $python3 main.py path/filename.txt")
+
 elif(len(sys.argv) > 2):
 	print("Error : Too many arguments")
 	print("You have passed more then 1 file")
