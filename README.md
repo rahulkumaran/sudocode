@@ -3,7 +3,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)<br>
 [![Gitter](https://img.shields.io/gitter/room/:user/:repo.svg)](https://gitter.im/Ossprojects4dev/sudocode)<br>
 
-Sudocode, as the name suggests, is the supreme coding tool for everyone. Using sudocode, one actually need not learn how to code in C or C++.<br>
+Sudocode, as the name suggests, is the supreme coding tool for everyone. Using sudocode, one actually need not to learn how to code in C or C++.<br>
 This particular tool helps you with converting your pseudocode to code.<br>
 All you need to do is follow some rules laid here and you'll be good to go. For now, this particular thing only converts pseudocode to C code. But I'll soon be expanding this to convert pseudocode to python and C++ code too.<br>
 
@@ -19,10 +19,10 @@ But for now, it's going to be just some code written with some common sense to h
 - Function  definition
 - Function calling
 - Printing of statements and variables
-- Initialising variables
+- Initializing variables
 - Basic increment and decrement statements
 
-<b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br>
+<b>All the above-mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br>
 
 <h2>How to Run</h2>
 
@@ -46,23 +46,23 @@ But for now, it's going to be just some code written with some common sense to h
 ![](https://media.giphy.com/media/3oxHQBuKWs2RuAwY5q/giphy.gif)
 
 
-- <h3>Starting main body</h3>
+- <h3>Starting the main body</h3>
 To start the code that's to be entered in the main body you need to start off with the word `start`
 
-- <h3>Initialising Variables</h3>
+- <h3>Initializing Variables</h3>
 Follow the following format:
 
     initialise <optional_type> <var_name>=<var_value>
     
-    EXAMPLE: (1) initialise int temp=0
-             (2) initialise var=100
+    EXAMPLE: (1) initialize int temp=0
+             (2) initialize var=100
 Both the examples above are valid.<br>
-Mentioning the type is optional. Incase you don't mention the type, the default type of the variable is float.
+Mentioning the type is optional. In case you don't mention the type, the default type of the variable is a float.
 
 - <h3>Print</h3>
-`Print` helps you print things on console. It could be statements or variables.<br>
+`Print` helps you print things on the console. It could be statements or variables.<br>
 The best part about this application is that it understands whether you want to print a string or a variable.<br>
-The only drawback here being that, you can print only one particular variable in one print statement for now.<br>
+The only drawback here is that, you can print only one particular variable in one print statement for now.<br>
 Let's see how it works!
 
         print <statement_or_variable to be printed>
@@ -103,7 +103,7 @@ If that's the case, don't worry, we have provision for that as well. Follow the 
                      -------
                      endfor
 
-You need not mention a negative gap as the application understands that it's supposed to give a negative gap.<br>
+You need not to mention a negative gap as the application understands that it's supposed to give a negative gap.<br>
 
 Now, an example of a loop:
 
@@ -111,10 +111,10 @@ Now, an example of a loop:
         print i
         endfor
         
-Here, the application understands that the program is supposed to print `i` as a variable and hence it print the value of `i` and not just `i` as it is.
+Here, the application understands that the program is supposed to print `i` as a variable and hence it prints the value of `i` and not just `i` as it is.
 
 - <h3>While Loops</h3>
-While loops can also be generated in this application. To utlilise the feature of while loops, follow the format:
+While loops can also be generated in this application. To utilise the feature of while loops, follow the format:
 
 	while <condition>
 	-----
