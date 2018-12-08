@@ -55,6 +55,9 @@ def code_execute(filename):
 		os.system(compile_command)		#Running the above command from script to compile the code
 		exec_file = "./"+filename[0:(len(filename)-4)]+"_cpp"	#To execute file
 		os.system(exec_file)
+	elif(find[1]=='py'):
+		compile_command = 'python3 ' + filename
+		os.system(compile_command)
 	else:
 		print("Sorry, but can't execute the your " + find[1] + " code mate! :(")
 
