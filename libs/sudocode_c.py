@@ -93,7 +93,7 @@ def get_code(filename):
 
 		elif("function" in line_elem):		#check for functions part
 			funcs.append(line_elem[1])	#adding func name to funcs stack
-			return_list = line_elem		#storing the line_elem list vals in return_list to get return type
+			return_list.append(line_elem)		#storing the line_elem list vals in return_list to get return type
 			temp = []
 			#print(line_elem)
 			line_of_code += line_elem[3] + " " + line_elem[1] + "("	#func defn
@@ -138,12 +138,28 @@ def get_code(filename):
 				variables.pop()
 				i += 1
 			line_of_code += "}"
-			return_list = []	#return list set to empty
+			#return_list = []	#return list set to empty
 
 		elif("call" in line_elem):	#to call functions in main
 			num_values = 0
-			if(line_elem[1] in funcs):	#checking if func name is funcs stack
+			for func in return_list:
+				if(line_elem[1] in func):
+					break
+			#if(line_elem[1] in funcs):	checking if func name is funcs stack
+		        if void in func:
 				line_of_code += line_elem[1] + "("
+				index_num_args = funcs.index(line_elem[1]) + 1
+				index_values = line_elem.index("values")
+				
+				for i in range(index_values+1,len(line_elem)):
+					num_values += 1
+					if(i == len(line_elem)-1):
+						line_of_code += line_elem[i] + ");"
+						break
+					line_elem[i] = line_elem[i].replace(",","")
+					line_of_code += line_elem[i] + ","
+			else:
+				line_of_code += func[3] + " = " + line_elem[1] + "("
 				index_num_args = funcs.index(line_elem[1]) + 1
 				index_values = line_elem.index("values")
 				
