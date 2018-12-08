@@ -159,7 +159,7 @@ def get_code(filename):
 					line_elem[i] = line_elem[i].replace(",","")
 					line_of_code += line_elem[i] + ","
 			else:
-				line_of_code += func[3] + " = " + line_elem[1] + "("
+				line_of_code += func[3] +" var  = " + line_elem[1] + "("
 				index_num_args = funcs.index(line_elem[1]) + 1
 				index_values = line_elem.index("values")
 				
