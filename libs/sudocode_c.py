@@ -17,6 +17,10 @@ def get_code(filename):
 		#print("\"",line_elem[0],"\"")
 		#print("gap" in line_elem)
 		line_of_code = ""	#initialising var to get the final line of code to be inserted in file
+		if (line_elem[0]=='initialise' and len(line_elem)==3):
+			line_elem[1:3] = [''.join(line_elem[1:3])]
+		if (line_elem[0]=='initialise' and len(line_elem)==4):
+			line_elem[1:4] = [''.join(line_elem[1:4])]
 
 		if("start" in line_elem):		#start keyword starts main function
 			line_of_code +="int main()\n{\n"
