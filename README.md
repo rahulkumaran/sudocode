@@ -25,6 +25,23 @@ But for now, it's going to be just some code written with some common sense to h
 
 <b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br>
 
+<h2>How to Run</h2>
+
+   1. Clone the source with `git`:
+
+   ```sh
+   $ git clone https://github.com/rahulkumaran/sudocode.git
+   $ cd sudocode
+   ```
+   2. Running sudocode:
+	
+   ```
+   $ python3 main.py path/filename.txt 
+   e.g. - $ python3 main.py testfiles/sudocode.txt
+   ```
+   > ***Note:*** Python 3.6 or later must be installed in your system
+   > in order to run this project
+
 <h2>Rules To Be Followed While Writing Pseudocode</h2>
 
 ![](https://media.giphy.com/media/3oxHQBuKWs2RuAwY5q/giphy.gif)
