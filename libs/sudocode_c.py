@@ -1,3 +1,6 @@
+import re
+def find(s, ch):
+    return [i for i, ltr in enumerate(s) if ltr == ch]
 #print(__name__)
 
 def get_code(filename):
@@ -14,13 +17,15 @@ def get_code(filename):
 		line_elem = line.split(" ")	#tokenisation at space
 		line_elem[-1] = line_elem[-1].replace("\n","")	#replacing new line char with null char
 		line_elem[0] = line_elem[0].lower()	#converting the first word in list_elem to all lower case letters
-		#print("\"",line_elem[0],"\"")
-		#print("gap" in line_elem)
-		line_of_code = ""	#initialising var to get the final line of code to be inserted in file
 		if (line_elem[0]=='initialise' and len(line_elem)==3):
 			line_elem[1:3] = [''.join(line_elem[1:3])]
 		if (line_elem[0]=='initialise' and len(line_elem)==4):
 			line_elem[1:4] = [''.join(line_elem[1:4])]
+		if (line_elem[0]=='initialise' and len(line_elem)==5):
+			line_elem[2:5] = [''.join(line_elem[2:5])]
+		#print("\"",line_elem[0],"\"")
+		#print("gap" in line_elem)
+		line_of_code = ""	#initialising var to get the final line of code to be inserted in file
 
 		if("start" in line_elem):		#start keyword starts main function
 			line_of_code +="int main()\n{\n"
@@ -78,22 +83,42 @@ def get_code(filename):
 
 		elif("print" in line_elem):		#print function implementation
 			line_of_code += "printf(\""
-			for i in range(1,len(line_elem)):	#getting each word to be printed
-				if(line_elem[i] in variables):		#checking if print statement is referring to variables being printed
-					index_var = variables.index(line_elem[i])	#get index of that particular variable
+			if ('"' in line):
+				b = re.split(' |(")',line)
+				new = [k for k in b if k is not None]
+				new1=[n for n in new if n is not '']
+				c='"'
+				d=find(new1,c)
+				new1[(d[0]+1):d[1]] = [' '.join(new1[(d[0]+1):d[1]])]
+				line_of_code += new1[2] + "\\n\""	#adding \n char for new line
+			elif ('(' in line and ')' in line):
+					b = re.split(' |(\))|(\()|(\+)|(\-)|(\*)|(\/)',line)
+					new = [k for k in b if k is not None]
+					new1=[n for n in new if n is not '']
+					c=new1.index('(')
+					d=new1.index(')')
+					var=new1[c+1]
+					new1[(c+1):d] = [''.join(new1[(c+1):d])]
+					index_var = variables.index(var)	#get index of that particular variable
 					line_of_code += "%"
 					if(variables[index_var-1]=="int"):	#checking one index before the var name to check var type in order to get right format specifier
-						line_of_code += "d\\n\"," + variables[index_var]
+						line_of_code += "d\\n\"," + new1[2]
 					if(variables[index_var-1]=="float"):
-						line_of_code += "f\\n\"," + variables[index_var]
+						line_of_code += "f\\n\"," + new1[2]
 					if(variables[index_var-1]=="char"):
-						line_of_code += "c\\n\"," + variables[index_var]
-					break
-				else:
-					if(i==len(line_elem)-1):	#check if last word of string is being printed
-						line_of_code += line_elem[i] + "\\n\""	#adding \n char for new line
+						line_of_code += "c\\n\"," + new1[2]
+			else:
+				for i in range(1,len(line_elem)):	#getting each word to be printed
+					if(line_elem[i] in variables):		#checking if print statement is referring to variables being printed
+						index_var = variables.index(line_elem[i])	#get index of that particular variable
+						line_of_code += "%"
+						if(variables[index_var-1]=="int"):	#checking one index before the var name to check var type in order to get right format specifier
+							line_of_code += "d\\n\"," + variables[index_var]
+						if(variables[index_var-1]=="float"):
+							line_of_code += "f\\n\"," + variables[index_var]
+						if(variables[index_var-1]=="char"):
+							line_of_code += "c\\n\"," + variables[index_var]
 						break
-					line_of_code += line_elem[i] + " "	#spacing need for each word
 			line_of_code += ");"
 
 
@@ -106,7 +131,7 @@ def get_code(filename):
 			index_arg = line_elem.index("args")	#check where args is indexed
 			#print(line_of_code)
 			for i in range(index_arg+1,len(line_elem), 2):	#start going through list in gaps of 2 to get var type and name
-				func_args += 1	#incrementing the func_args by 1 
+				func_args += 1	#incrementing the func_args by 1
 				variables.append(line_elem[i])	#pushing args to variables list for checking return value validity
 				variables.append(line_elem[i+1])
 				if(i+1 == len(line_elem)-1):
@@ -152,7 +177,7 @@ def get_code(filename):
 				line_of_code += line_elem[1] + "("
 				index_num_args = funcs.index(line_elem[1]) + 1
 				index_values = line_elem.index("values")
-				
+
 				for i in range(index_values+1,len(line_elem)):
 					num_values += 1
 					if(i == len(line_elem)-1):
@@ -187,12 +212,4 @@ def get_code(filename):
 	code_file_ptr.write("}")	#ending the code with a last }
 
 	code_file_ptr.close()	#closing code file ptr.
-	file_ptr.close()	#closing file ptr 
-	
-
-
-
-
-
-
-
+	file_ptr.close()	#closing file ptr
