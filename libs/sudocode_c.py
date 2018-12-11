@@ -105,6 +105,7 @@ def get_code(filename):
 				line_elem[i+1] = line_elem[i+1].replace(",","")
 				line_of_code += line_elem[i] + " " + line_elem[i+1] + ","
 
+			#print(func_args)
 			funcs.append(func_args)	#appending number of args to stack
 
 			'''temp = list(line_of_code)
@@ -158,13 +159,17 @@ def get_code(filename):
 			line_of_code += line + ";"
 
 		code_file_ptr.write(line_of_code+'\n')	#writing line of code into file
+		#print(variables)
+		#print(funcs)
 
 	while(len(variables)>0):	#popping out all variables type and name
 		variables.pop()
 
 	while(len(funcs)>0):	#popping out all func names and no. of args
 		funcs.pop()
-	
+		#print(variables)
+	#print(funcs)
+
 	code_file_ptr.write("}")	#ending the code with a last }
 	code_file_ptr.close()	#closing code file ptr.
 	file_ptr.close()	#closing file ptr
