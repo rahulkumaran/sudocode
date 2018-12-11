@@ -1,7 +1,8 @@
 # Sudocode
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)<br>
-[![Gitter](https://img.shields.io/gitter/room/:user/:repo.svg)](https://gitter.im/Ossprojects4dev/sudocode)<br>
+[![Gitter](https://img.shields.io/gitter/room/:user/:repo.svg)](https://gitter.im/Ossprojects4dev/sudocode)
+[![Build Status](https://travis-ci.com/rahulkumaran/sudocode.svg?branch=master)](https://travis-ci.com/rahulkumaran/sudocode)<br>
 
 Sudocode, as the name suggests, is the supreme coding tool for everyone. Using sudocode, one actually need not learn how to code in C or C++.<br>
 This particular tool helps you with converting your pseudocode to code.<br>
@@ -23,6 +24,23 @@ But for now, it's going to be just some code written with some common sense to h
 - Basic increment and decrement statements
 
 <b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b><br>
+
+<h2>How to Run</h2>
+
+   1. Clone the source with `git`:
+
+   ```sh
+   $ git clone https://github.com/rahulkumaran/sudocode.git
+   $ cd sudocode
+   ```
+   2. Running sudocode:
+	
+   ```
+   $ python3 main.py path/filename.txt 
+   e.g. - $ python3 main.py testfiles/sudocode.txt
+   ```
+   > ***Note:*** Python 3.6 or later must be installed in your system
+   > in order to run this project
 
 <h2>Rules To Be Followed While Writing Pseudocode</h2>
 
