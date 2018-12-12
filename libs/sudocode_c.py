@@ -104,7 +104,6 @@ def get_code(filename):
 					break
 				line_elem[i+1] = line_elem[i+1].replace(",","")
 				line_of_code += line_elem[i] + " " + line_elem[i+1] + ","
-
 			#print(func_args)
 			funcs.append(func_args)	#appending number of args to stack
 
