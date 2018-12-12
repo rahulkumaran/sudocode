@@ -146,26 +146,19 @@ def get_code(filename):
 			index_values = 0
 			#print(return_list)
 			for func in return_list:
-				print(func, line_elem[1])
-				'''if(line_elem[1] in func):
-					print("5")
-					break'''
+				#print(func, line_elem[1])
 				#if(line_elem[1] in funcs):	checking if func name is funcs stack
 				if('void' in func):
-					print("2")
 					line_of_code += line_elem[1] + "("
 					index_num_args = funcs.index(line_elem[1]) + 1
 					index_values = line_elem.index("values")
 
 				else:
-					print(funcs)
-					print("3")
 					line_of_code += return_list[0][3] +" var  = " + line_elem[1] + "("
 					index_num_args = funcs.index(line_elem[1]) + 1
 					index_values = line_elem.index("values")
 
 				for i in range(index_values+1,len(line_elem)):
-					print("4")
 					num_values += 1
 					if(i == len(line_elem)-1):
 						line_of_code += line_elem[i] + ");"
