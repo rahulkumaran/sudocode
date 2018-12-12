@@ -100,7 +100,7 @@ def get_code(filename):
 			index_arg = line_elem.index("args")	#check where args is indexed
 			#print(line_of_code)
 			for i in range(index_arg+1,len(line_elem), 2):	#start going through list in gaps of 2 to get var type and name
-				func_args += 1	#incrementing the func_args by 1 
+				func_args += 1	#incrementing the func_args by 1
 				variables.append(line_elem[i])	#pushing args to variables list for checking return value validity
 				variables.append(line_elem[i+1])
 				if(i+1 == len(line_elem)-1):
@@ -123,7 +123,8 @@ def get_code(filename):
 				variables[i] = (variables[i].split(","))[0]
 			if(line_elem[1] in variables):	#check if return var in variables stack
 				index_return = variables.index(line_elem[1])	#getting index of return var name
-				if(variables[index_return-1] == return_list[3]):	#checking types are same or not
+				#print(return_list)
+				if(variables[index_return-1] == return_list[0][3]):	#checking types are same or not
 					line_of_code += " " + variables[index_return]	#then adding to line_of_code
 				else:
 					raise("the return type in function definition and variable type of returned value don't match!")
@@ -142,28 +143,29 @@ def get_code(filename):
 
 		elif("call" in line_elem):	#to call functions in main
 			num_values = 0
+			index_values = 0
+			#print(return_list)
 			for func in return_list:
-				if(line_elem[1] in func):
-					break
-			#if(line_elem[1] in funcs):	checking if func name is funcs stack
-		        if void in func:
-				line_of_code += line_elem[1] + "("
-				index_num_args = funcs.index(line_elem[1]) + 1
-				index_values = line_elem.index("values")
-				
+				print(func, line_elem[1])
+				'''if(line_elem[1] in func):
+					print("5")
+					break'''
+				#if(line_elem[1] in funcs):	checking if func name is funcs stack
+				if('void' in func):
+					print("2")
+					line_of_code += line_elem[1] + "("
+					index_num_args = funcs.index(line_elem[1]) + 1
+					index_values = line_elem.index("values")
+
+				else:
+					print(funcs)
+					print("3")
+					line_of_code += return_list[0][3] +" var  = " + line_elem[1] + "("
+					index_num_args = funcs.index(line_elem[1]) + 1
+					index_values = line_elem.index("values")
+
 				for i in range(index_values+1,len(line_elem)):
-					num_values += 1
-					if(i == len(line_elem)-1):
-						line_of_code += line_elem[i] + ");"
-						break
-					line_elem[i] = line_elem[i].replace(",","")
-					line_of_code += line_elem[i] + ","
-			else:
-				line_of_code += func[3] +" var  = " + line_elem[1] + "("
-				index_num_args = funcs.index(line_elem[1]) + 1
-				index_values = line_elem.index("values")
-				
-				for i in range(index_values+1,len(line_elem)):
+					print("4")
 					num_values += 1
 					if(i == len(line_elem)-1):
 						line_of_code += line_elem[i] + ");"
@@ -197,12 +199,4 @@ def get_code(filename):
 	code_file_ptr.write("}")	#ending the code with a last }
 
 	code_file_ptr.close()	#closing code file ptr.
-	file_ptr.close()	#closing file ptr 
-	
-
-
-
-
-
-
-
+	file_ptr.close()	#closing file ptr
