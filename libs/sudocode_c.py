@@ -144,7 +144,7 @@ def get_code(filename):
 				#if(line_elem[1] in funcs):	checking if func name is funcs stack
 				if('void' in func):
 					line_of_code += line_elem[1] + "("
-					index_num_args = funcs.index(line_elem[1]) + 1
+					#index_num_args = funcs.index(line_elem[1]) + 1
 					index_values = line_elem.index("values")
 
 				else:
