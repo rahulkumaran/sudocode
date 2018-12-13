@@ -89,7 +89,7 @@ def get_code(filename):
 
 		elif("function" in line_elem):		#check for functions part
 			funcs.append(line_elem[1])	#adding func name to funcs stack
-			return_list = line_elem		#storing the line_elem list vals in return_list to get return type
+			return_list.append(line_elem)		#storing the line_elem list vals in return_list to get return type
 			#temp = []
 			#print(line_elem)
 			line_of_code += line_elem[3] + " " + line_elem[1] + "("	#func defn
