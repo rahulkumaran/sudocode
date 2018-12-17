@@ -6,7 +6,8 @@
 [![Issues](https://img.shields.io/github/issues/rahulkumaran/sudocode.svg)](https://github.com/rahulkumaran/sudocode/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/rahulkumaran/sudocode.svg)](https://github.com/rahulkumaran/sudocode/pulls)<br>
 [![Gitter](https://img.shields.io/gitter/room/:user/:repo.svg)](https://gitter.im/Ossprojects4dev/sudocode)
-[![Build Status](https://travis-ci.com/rahulkumaran/sudocode.svg?branch=master)](https://travis-ci.com/rahulkumaran/sudocode)<br>
+[![Build Status](https://travis-ci.com/rahulkumaran/sudocode.svg?branch=master)](https://travis-ci.com/rahulkumaran/sudocode)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/rahulkumaran/sudocode/blob/master/LICENSE)<br>
 
 Sudocode, as the name suggests, is the supreme coding tool for everyone. Using sudocode, one actually need not learn how to code in C or C++.<br>
 This particular tool helps you with converting your pseudocode to code.<br>
