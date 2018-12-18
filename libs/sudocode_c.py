@@ -29,13 +29,13 @@ def get_code(filename):
 		if("start" in line_elem):		#start keyword starts main function
 			line_of_code +="int main()\n{\n"
 
-		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem)):
+		elif(("initialise" in line_elem) and ("int" not in line_elem) and ("float" not in line_elem) and ("char" not in line_elem)):
 			line_of_code += "float " + line_elem[1]  + ";"	#default type is float
 			variables.append("float")		#storing var type in stack
 			line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
 			variables.append(line_elem[1])		#pushing var name into variables stack
 
-		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
+		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem) or ("char" in line_elem))):
 			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
 			variables.append(line_elem[1])		#storing var type in stack
 			line_elem[2] = (line_elem[2].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
@@ -87,6 +87,8 @@ def get_code(filename):
 						line_of_code += "d\\n\"," + variables[index_var]
 					if(variables[index_var-1]=="float"):
 						line_of_code += "f\\n\"," + variables[index_var]
+					if(variables[index_var-1]=="char"):
+						line_of_code += "c\\n\"," + variables[index_var]
 					break
 				else:
 					if(i==len(line_elem)-1):	#check if last word of string is being printed
