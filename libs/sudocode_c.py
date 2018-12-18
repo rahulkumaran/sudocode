@@ -1,3 +1,6 @@
+import re
+def find(s, ch):
+    return [i for i, ltr in enumerate(s) if ltr == ch]
 #print(__name__)
 
 def get_code(filename):
@@ -79,24 +82,43 @@ def get_code(filename):
 
 		elif("print" in line_elem):		#print function implementation
 			line_of_code += "printf(\""
-			for i in range(1,len(line_elem)):	#getting each word to be printed
-				if(line_elem[i] in variables):		#checking if print statement is referring to variables being printed
-					index_var = variables.index(line_elem[i])	#get index of that particular variable
+			if ('"' in line):
+				b = re.split(' |(")',line)
+				new = [k for k in b if k is not None]
+				new1=[n for n in new if n is not '']
+				c='"'
+				d=find(new1,c)
+				new1[(d[0]+1):d[1]] = [' '.join(new1[(d[0]+1):d[1]])]
+				line_of_code += new1[2] + "\\n\""	#adding \n char for new line
+			elif ('(' in line and ')' in line):
+					b = re.split(' |(\))|(\()|(\+)|(\-)|(\*)|(\/)',line)
+					new = [k for k in b if k is not None]
+					new1=[n for n in new if n is not '']
+					c=new1.index('(')
+					d=new1.index(')')
+					var=new1[c+1]
+					new1[(c+1):d] = [''.join(new1[(c+1):d])]
+					index_var = variables.index(var)	#get index of that particular variable
 					line_of_code += "%"
 					if(variables[index_var-1]=="int"):	#checking one index before the var name to check var type in order to get right format specifier
-						line_of_code += "d\\n\"," + variables[index_var]
+						line_of_code += "d\\n\"," + new1[2]
 					if(variables[index_var-1]=="float"):
-						line_of_code += "f\\n\"," + variables[index_var]
+						line_of_code += "f\\n\"," + new1[2]
 					if(variables[index_var-1]=="char"):
-						line_of_code += "c\\n\"," + variables[index_var]
-					break
-				else:
-					if(i==len(line_elem)-1):	#check if last word of string is being printed
-						line_of_code += line_elem[i] + "\\n\""	#adding \n char for new line
+						line_of_code += "c\\n\"," + new1[2]
+			else:
+				for i in range(1,len(line_elem)):	#getting each word to be printed
+					if(line_elem[i] in variables):		#checking if print statement is referring to variables being printed
+						index_var = variables.index(line_elem[i])	#get index of that particular variable
+						line_of_code += "%"
+						if(variables[index_var-1]=="int"):	#checking one index before the var name to check var type in order to get right format specifier
+							line_of_code += "d\\n\"," + variables[index_var]
+						if(variables[index_var-1]=="float"):
+							line_of_code += "f\\n\"," + variables[index_var]
+						if(variables[index_var-1]=="char"):
+							line_of_code += "c\\n\"," + variables[index_var]
 						break
-					line_of_code += line_elem[i] + " "	#spacing need for each word
 			line_of_code += ");"
-
 		elif("function" in line_elem):		#check for functions part
 			funcs.append(line_elem[1])	#adding func name to funcs stack
 			return_list.append(line_elem)		#storing the line_elem list vals in return_list to get return type
