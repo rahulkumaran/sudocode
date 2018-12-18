@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SudoCode</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style>
+      .navbar{
+        margin-bottom:0;
+        border-radius:0;
+      }
+      .navbar1{
+        margin-right: 0 !important;
+        margin-left: 5 !important;
+      }
+      .bgc{
+        background-color: #012D42 !important;
+      }
+      .bgc1{
+        background-color: #0284A8 !important;
+      }
+      .bgc2{
+        border-radius: 10px;
+        background-color: #E3E1E1 !important;
+      }
+      .just{
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .just1{
+        margin-top: 10px !important;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="navbar1 container">
+        <div class="navbar-header" style="font-family:verdana;">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+          </button>
+          <p class="navbar navbar-brand" style="color:red; font-size:250%;">SudoCode</p>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">How to Use<span class="sr-only">(current)</span></a></li>
+            <!-- This Can Give Us a Dropdown List to choose for which language we want the code:
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conversion<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">C</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">C++</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Python</a></li>
+              </ul>
+            </li>
+            //-->
+            <li><a href="#">Conversion</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="bgc jumbotron text-center">
+      <div class="container">
+        <h1 style="color: #0BCDD4;">Sudocode</h1>
+        <p style="color: #E1F7E7;">Coding has never been simpler before</p>
+      </div>
+    </div>
+
+    <div class="bgc1 jumbotron text-center">
+    <div class="container">
+      <h2 style="color: #BD0000; font-size:250%;"><b>How to use SudoCode</b></h2>
+      <hr>
+      <p class="just lead" style="color: #E1F7E7;">Sudocode, as the name suggests, is the supreme coding tool for everyone. Using sudocode, one actually need not learn how to code in C or C++.This particular tool helps you with converting your pseudocode to code.All you need to do is follow some rules laid here and you'll be good to go. For now, this particular thing only converts pseudocode to C code. But I'll soon be expanding this to convert pseudocode to python and C++ code too.</p>
+      <p class="just lead" style="color: #E1F7E7;">It's a fairly simple project and does not involve any Machine Learning, but yes, implementing this using ML is definitely on the cards.But for now, it's going to be just some code written with some common sense to help achieve this.</p>
+      <hr>
+      <h2 style="color: #012D42; font-size:250%;"><b>Possible Functionalities That Can Be Performed</b></h2>
+      <hr>
+      <p><img src="pic1"></p>
+      <ul>
+        <li class="just lead" style="color: #E1F7E7;">For loop</li>
+        <li class="just lead" style="color: #E1F7E7;">While loop</li>
+        <li class="just lead" style="color: #E1F7E7;">Function definition</li>
+        <li class="just lead" style="color: #E1F7E7;">Function calling</li>
+        <li class="just lead" style="color: #E1F7E7;">Printing of statements and variables</li>
+        <li class="just lead" style="color: #E1F7E7;">Initialising variables</li>
+        <li class="just lead" style="color: #E1F7E7;">Basic increment and decrement statements</li>
+      </ul>
+      <p class="just lead" style="color: #E1F7E7;"><b>All the above mentioned functionalities can be written in the form of a pseudocode and will be converted to code by our program</b></p>
+      <hr>
+      <h2 style="color: #012D42; font-size:250%;"><b>How to Run</b></h2>
+      <hr>
+      <ol>
+        <li class="just lead" style="color: #E1F7E7;">Clone the source with  <button class="btn btn-default btn-xs" disabled="disabled">git</button></li>
+        <div class="bgc2 container">
+          <p class="just1" style="color: #000000; font-size:100%;">$ git clone <a href="https://github.com/rahulkumaran/sudocode.git">https://github.com/rahulkumaran/sudocode.git</a></p>
+          <p class="just1" style="color: #000000; font-size:100%;">$ cd sudocode</p>
+        </div>
+        <br>
+        <li class="just lead" style="color: #E1F7E7;">Running sudocode: </li>
+        <div class="bgc2 container">
+          <p class="just1" style="color: #000000; font-size:100%;">$ python3 main.py path/filename.txt</p>
+          <p class="just1" style="color: #000000; font-size:100%;">e.g. - $ python3 main.py testfiles/sudocode.txt</p>
+        </div>
+      </ol>
+      <blockquote class="blockquote">
+        <p class="just lead" style="color: #E1F7E7;">Note: Python 3.6 or later must be installed in your system in order to run this project</p>
+      </blockquote>
+      <hr>
+      <h2 style="color: #012D42; font-size:250%;"><b>Rules To Be Followed While Writing Pseudocode</b></h2>
+      <hr>
+      <p><img src="pic2.gif"></p>
+      <ul>
+        <li class="just lead" style="color: #E1F7E7;"><b><u>Starting main body</u></b></li>
+        <p class="just lead" style="color: #E1F7E7;">To start the code that's to be entered in the main body you need to start off with the word  <button class="btn btn-default btn-xs" disabled="disabled"> start </button></p>
+        <li class="just lead" style="color: #E1F7E7;"><b><u>Initialising Variables</u></b></li>
+        <p class="just lead" style="color: #E1F7E7;">Follow the following format: </p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;">initialise &lt;optional_type&gt; &lt;var_name&gt; = &lt;var_value&gt;</p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> initialise int temp=0 </li><li class="just lead" style="color: #000000; font-size:100%;"> initialise var=100 </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">Both the examples above are valid.</p>
+        <p class="just lead" style="color: #E1F7E7;">Mentioning the type is optional. Incase you don't mention the type, the default type of the variable is float.</p>
+        <li class="just lead" style="color: #E1F7E7;"><b><u>Print</u></b></li>
+        <p class="just lead" style="color: #E1F7E7;"><button class="btn btn-default btn-xs" disabled="disabled"> Print </button>  helps you print things on console. It could be statements or variables.</p>
+        <p class="just lead" style="color: #E1F7E7;">The best part about this application is that it understands whether you want to print a string or a variable.</p>
+        <p class="just lead" style="color: #E1F7E7;">The only drawback here being that, you can print only one particular variable in one print statement for now.</p>
+        <p class="just lead" style="color: #E1F7E7;">Let's see how it works!</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;">print &lt;statement_or_variable to be printed&gt;</p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> print hey there </li><li class="just lead" style="color: #000000; font-size:100%;"> print inside loop now </li>
+            <li class="just lead" style="color: #000000; font-size:100%;"> Let's assume there's a variable "temp" in the main body, then <br> print temp </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">The last statement says print temp. Here, the application understands that temp means the variable temp and not the string temp to be printed. It also understands whether the variable mentioned is an integer or a float value and accordingly mentions the format specifier in C and C++.</p>
+        <li class="just lead" style="color: #E1F7E7;"><b><u>For Loops</u></b></li>
+        <p class="just lead" style="color: #E1F7E7;">Incase you want utilise the functionality of for loops, you can do it in the following manner:</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;">for int &lt;var_name&gt; = &lt;start_value&gt; to &lt;stop_value&gt;</p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> for int i=0 to 10 <br> ----------- <br> ----------- <br> endfor </li><li class="just lead" style="color: #000000; font-size:100%;"> for int i=50 to 10 <br> ----------- <br> ----------- <br> endfor </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;"><button class="btn btn-default btn-xs" disabled="disabled"> endfor </button>  is used at the end of the for loop. As, you can see above, you can loop from a higher to a lower value and also the other way round.</p>
+        <p class="just lead" style="color: #E1F7E7;">Also, the ----- can be filled with statements or operations that you want to perform within the for loop.</p>
+        <p class="just lead" style="color: #E1F7E7;">By default, the increment and decrement in the loop is 1. Sometimes you might want to increment or decrement the looping variable by a value greater than 1. </p>
+        <p class="just lead" style="color: #E1F7E7;">If that's the case, don't worry, we have provision for that as well. Follow the following steps:</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;">for int &lt; var_name &gt; = &lt; start_value &gt; to &lt; stop_value &gt; with gap = &lt; gap_size &gt;</p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> for int i=0 to 60 with gap=3 <br> ----------- <br> ----------- <br> endfor </li><li class="just lead" style="color: #000000; font-size:100%;"> for int i=60 to 10 with gap=3 <br> ----------- <br> ----------- <br> endfor </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">You need not mention a negative gap as the application understands that it's supposed to give a negative gap.</p>
+        <p class="just lead" style="color: #E1F7E7;">Now, an example of a loop:</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> for int i=10 to 1 and gap=2 </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> print i </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> endfor </p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">Here, the application understands that the program is supposed to print <button class="btn btn-default btn-xs" disabled="disabled"> i </button> as a variable and hence it print the value of <button class="btn btn-default btn-xs" disabled="disabled"> i </button> and not just <button class="btn btn-default btn-xs" disabled="disabled"> i </button> as it is.</p>
+        <li class="just lead" style="color: #E1F7E7;"><b><u>While Loops</b></u></li>
+        <p class="just lead" style="color: #E1F7E7;">While loops can also be generated in this application. To utlilise the feature of while loops, follow the format:</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> while &lt; condition &gt; </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> ----------- </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> ----------- </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> endwhile </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> while i<=10 <br> print i <br> i++ <br> endwhile </li><li class="just lead" style="color: #000000; font-size:100%;"> initialise int temp=110 <br> while temp>=100 <br> print temp <br> temp-- <br> endwhile </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">As you can see above, <button class="btn btn-default btn-xs" disabled="disabled"> endwhile </button> is used at the end of the while loop.</p>
+        <p class="just lead" style="color: #E1F7E7;">So basically, you can enter any statement or code in while loop, just that it should end with an <button class="btn btn-default btn-xs" disabled="disabled"> endwhile </button> . </p>
+        <li class="just lead" style="color: #E1F7E7;"><u><b>Functions</b></u></li>
+        <p class="just lead" style="color: #E1F7E7;">To define a function that has n arguments, you can follow the following format:</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> function &lt; func_name &gt; returns &lt; return_type &gt; with args &lt; var_type &gt; &lt; var_1 &gt; , &lt; var_type &gt; &lt; var_2 &gt; ,....., &lt; var_type &gt; &lt;var_n &gt; </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;">EXAMPLE: <ol><li class="just lead" style="color: #000000; font-size:100%;"> function test returns int with args int a, float b, int c </li><li class="just lead" style="color: #000000; font-size:100%;"> function test returns void with args int size, float array_size </li></ol></p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">Incase you don't want to return anything, then you'll have to mention void. Now to make sure you have some statements within the function, you can follow the format as mentioned for all above avaiable functionalities.
+          Just make sure that you end your function with <button class="btn btn-default btn-xs" disabled="disabled"> endfunction </button>.</p>
+        <p class="just lead" style="color: #E1F7E7;">An example is given below that gives you a clearer picture of how to define statements within a function.</p>
+        <div class="bgc2 container">
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> function test returns int with args int a, int b, int c </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> print test func </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> a++ </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> b++ </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> c++ </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> a = b + c </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> return a </p>
+          <p class="just1 lead" style="color: #000000; font-size:100%;"> endfunction </p>
+        </div>
+        <br>
+        <p class="just lead" style="color: #E1F7E7;">As you can see above, there's a <button class="btn btn-default btn-xs" disabled="disabled"> return </button> statement. This statement is optional.</p>
+        <p class="just lead" style="color: #E1F7E7;">Incase you decide to return a value, just make sure you mention the value you want tor return.</p>
+    </div>
+  </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+  </body>
+</html>
