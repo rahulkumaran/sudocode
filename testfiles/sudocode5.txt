@@ -1,0 +1,7 @@
+start
+initialise char c = 'a'
+initialise char d = 'b'
+initialise int x = 10
+print c
+print d
+
