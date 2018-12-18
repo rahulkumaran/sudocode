@@ -1,0 +1,5 @@
+language: python
+python:
+- 3.6
+install: pip3 install -r requirements.txt
+script: python3 main.py testfiles/sudocode3.txt
