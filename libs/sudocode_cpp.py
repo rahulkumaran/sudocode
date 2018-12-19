@@ -1,6 +1,6 @@
 #print(__name__)
 
-def get_code(filename):
+def get_code_cpp(filename):
 	return_list = []		#stores the last defined function details to get return statement accordingly.
 	variables = []			#Stores the list of all variables
 	funcs = []		#stores list of all functions and number of args to each func
