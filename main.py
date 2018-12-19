@@ -1,5 +1,6 @@
-from libs.sudocode import get_code, get_code_cpp
+from libs.sudocode import get_code
 from libs.cleaner import code_cleaner, code_execute
+from libs.sudocode import get_code_cpp
 
 if(__name__=='__main__'):
 

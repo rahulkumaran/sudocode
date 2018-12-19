@@ -26,7 +26,6 @@ def get_code(filename):
 			variables.append("float")		#storing var type in stack
 			line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
 			variables.append(line_elem[1])		#pushing var name into variables stack
-			#print(variables)
 
 		elif(("initialise" in line_elem) and (("int" in line_elem) or ("float" in line_elem))):
 			line_of_code += line_elem[1] + " " + line_elem[2]  + ";"
