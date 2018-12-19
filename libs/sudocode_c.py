@@ -86,14 +86,17 @@ def get_code(filename):
 						break
 					line_of_code += line_elem[i] + " "	#spacing need for each word
 			line_of_code += ");"
-		#Enigma goes here
+		
 		elif("input" in line_elem):
 			
 			for i in range(1,len(line_elem)):	#getting each word to be input
 				if(line_elem[i] in variables):		#checking if input statement is referring to variables being scanned
-					line_of_code += "scanf(\""
 					index_var = variables.index(line_elem[i])	#get index of that particular variable
-					print(index_var,"**********")
+					if(variables[index_var-1]=="int"):
+						line_of_code += "printf(\"Enter a integer: \");\nscanf(\""
+					if(variables[index_var-1]=="float"):
+						line_of_code += "printf(\"Enter a float value: \");\nscanf(\""
+					
 					line_of_code += "%"
 					if(variables[index_var-1]=="int"):	#checking one index before the var name to check var type in order to get right format specifier
 						line_of_code += "d\",&" + variables[index_var]
@@ -106,7 +109,7 @@ def get_code(filename):
 					line_elem[1] = (line_elem[1].split("="))[0]	#need to store var name so tokenising at = in order to get name of var
 					variables.append(line_elem[1])		#pushing var name into variables stack
 					
-					line_of_code += "\nscanf(\""
+					line_of_code += "\nprintf(\"Enter a float value: \");\nscanf(\""
 					index_var = variables.index(line_elem[i])	#get index of that particular variable
 					line_of_code += "%"
 					line_of_code += "f\",&" + variables[index_var] # if a variable is not initialized then by default it is set to float
