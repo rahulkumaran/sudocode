@@ -15,15 +15,15 @@ int test(int a,int b,int c)
 int main()
 {
 	
-	float i=0;
+	int i=0;
 	int k=100;
-	for(int i=0; i <= 10; i++)
+	for(i=0; i <= 10; i++)
 	{
 		printf("hey dude\n");
 		k++;
 		k+=100;
 	}
-	for(int i=0; i <= 10; i+=2)
+	for(i=0; i <= 10; i+=2)
 	{
 		while(i<=5)
 		{
@@ -34,6 +34,7 @@ int main()
 		printf("success\n");
 		k++;
 	}
+	int i=0;
 	while(i<=10)
 	{
 		printf("here\n");
