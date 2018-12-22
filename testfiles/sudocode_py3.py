@@ -6,12 +6,12 @@ def test_3(a,temp,test):
 	a = b/test
 	return a
 
-	
+
 
 
 
 a=10
-hi=20
+hi=int(input("Enter the value")
 print("{}".format(hi))
 test_3(0,10,10)
 for i in range(0,11):
@@ -22,7 +22,7 @@ for i in range(0,11):
 	else:
 
 		print("not even\n")
-		
 
-	
+
+
 print("{}".format(hi))
