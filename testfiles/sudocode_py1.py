@@ -5,17 +5,14 @@ def test_2(a,b,sad):
 	sad=b
 	return sad
 
-	
 
-
-
-a=120.0
-b=10.0
+a=int(input("Enter the number 1"))  
+b=int(input("Enter the number 2")) 
 summ=a+b
 
 test_2(2,3,4)
-for i in range(10,0,-2):
+for i in range(b,0,-2):
 
 	print("{}".format(i))
-	
+
 print("{}".format(summ))
