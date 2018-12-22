@@ -5,7 +5,6 @@ def test_2(a,b,sad):
 	sad=b
 	return sad
 
-
 a=int(input("Enter the number 1"))  
 b=int(input("Enter the number 2")) 
 summ=a+b
