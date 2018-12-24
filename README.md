@@ -24,6 +24,7 @@ But for now, it's going to be just some code written with some common sense to h
 - While loop
 - Function  definition
 - Function calling
+- Inputting a variable
 - Printing of statements and variables
 - Initialising variables
 - Basic increment and decrement statements
@@ -64,6 +65,21 @@ Follow the following format:
              (2) initialise var=100
 Both the examples above are valid.<br>
 Mentioning the type is optional. Incase you don't mention the type, the default type of the variable is float.
+
+- <h3>Input a variable</h3>
+`Input` helps you input variable on console. It can only be a variable.<br>
+The best part about this is that it automatically initialises an uninitialised variable to float and then takes the input.<br>
+The only drawback here being that, you can input only one particular variable in one input statement for now.<br>
+Let's see how it works!
+
+        input <variable>
+        
+        EXAMPLE: (1) initialise x
+                     input x
+                 (2) input b
+                 
+<br>
+
 
 - <h3>Print</h3>
 `Print` helps you print things on console. It could be statements or variables.<br>

@@ -11,6 +11,8 @@ start
 initialise hi=20
 initialise int a
 input a
+input b
+print b
 print hi
 call test_3 with values 0,10,10
 for int i=0 to 10
