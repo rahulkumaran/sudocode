@@ -17,7 +17,7 @@ int main()
 	float a=10;
 	float hi=20;
 	printf("%f\n",hi);
-	test_3(0,10,10);
+	int var  = test_3(0,10,10);
 	for(int i=0; i <= 10; i++)
 	{
 		if(i%2==0)

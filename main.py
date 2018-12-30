@@ -1,6 +1,8 @@
 from libs.sudocode_c import get_code
 from libs.cleaner import code_cleaner, code_execute
+from libs.sudocode_cpp import get_code_cpp
 import sys
+
 
 if(len(sys.argv) is 2):
 	if(__name__=='__main__'):
@@ -8,11 +10,14 @@ if(len(sys.argv) is 2):
 		#print(__name__)
 		filename = sys.argv[1]
 
-		get_code(filename)
+	get_code(filename)
+	get_code_cpp(filename)
 
-		code_cleaner(filename[0:len(filename)-4]+".c")
+	code_cleaner(filename[0:len(filename)-4]+".c")
+	code_cleaner(filename[0:len(filename)-4]+".cpp")
 
-		code_execute(filename[0:len(filename)-4]+".c")
+
+	code_execute(filename[0:len(filename)-4]+".c")
 
 		#print(__name__)
 
