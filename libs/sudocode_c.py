@@ -2,29 +2,35 @@
 
 def variable_line(line_elem):
 		
-		''' Uncomment for testing this function individually
+		''' Uncomment to test the function 
 		
 		line_elem = line_elem.split(" ")	#tokenisation at space
 		line_elem[-1] = line_elem[-1].replace("\n","")	#replacing new line char with null char
 		line_elem[0] = line_elem[0].lower()	
 		line_elem=list(filter(lambda x: x!='', line_elem))
 		'''
-		
+
 		elem_no=0               #the index of the word in the line we are probing
 		var_type="" 			#the type of variable
 		var_value=''			#the value of variable
 		var_identifier=""		#variable indentifier
-		if(line_elem[elem_no] in ["int", "float"]): #check if there is a type specified
+		if(line_elem[elem_no] in ["int", "float", "char"]): #check if there is a type specified
 			var_type=line_elem[elem_no] #assign the type
 			elem_no+=1					#increment elem_no i.e. to probe the next element
 			if(var_type=="int"):
 				var_value="0"
 			elif(var_type=="float"):
 				var_value="0.0"
-			
-		else: 							# assign float 
-			var_type="float"
-			var_value="0.0"
+			else:
+				var_value="\'\'"		#Assigning default values in case no defined value is found
+
+		else: 							#check if the data type is alpha or numeric
+			if(line_elem[-1][-1]=='\''):
+				var_type="char"
+				var_value="\'\'"
+			else:
+				var_type="float"
+				var_value="0.0"
 
 
 		#if there is an equal to, separate the identifier and value
@@ -58,7 +64,6 @@ def variable_line(line_elem):
 				var_value=line_elem[elem_no][1:]
 
 		return (var_type, var_identifier, var_value)
-
 
 
 
@@ -153,14 +158,14 @@ def get_code(filename):
 
 		elif("function" in line_elem):		#check for functions part
 			funcs.append(line_elem[1])	#adding func name to funcs stack
-			return_list.append(line_elem)		#storing the line_elem list vals in return_list to get return type
+			return_list = line_elem		#storing the line_elem list vals in return_list to get return type
 			temp = []
 			#print(line_elem)
 			line_of_code += line_elem[3] + " " + line_elem[1] + "("	#func defn
 			index_arg = line_elem.index("args")	#check where args is indexed
 			#print(line_of_code)
 			for i in range(index_arg+1,len(line_elem), 2):	#start going through list in gaps of 2 to get var type and name
-				func_args += 1	#incrementing the func_args by 1
+				func_args += 1	#incrementing the func_args by 1 
 				variables.append(line_elem[i])	#pushing args to variables list for checking return value validity
 				variables.append(line_elem[i+1])
 				if(i+1 == len(line_elem)-1):
@@ -183,8 +188,7 @@ def get_code(filename):
 				variables[i] = (variables[i].split(","))[0]
 			if(line_elem[1] in variables):	#check if return var in variables stack
 				index_return = variables.index(line_elem[1])	#getting index of return var name
-				#print(return_list)
-				if(variables[index_return-1] == return_list[0][3]):	#checking types are same or not
+				if(variables[index_return-1] == return_list[3]):	#checking types are same or not
 					line_of_code += " " + variables[index_return]	#then adding to line_of_code
 				else:
 					raise("the return type in function definition and variable type of returned value don't match!")
@@ -199,25 +203,15 @@ def get_code(filename):
 				variables.pop()
 				i += 1
 			line_of_code += "}"
-			#return_list = []	#return list set to empty
+			return_list = []	#return list set to empty
 
 		elif("call" in line_elem):	#to call functions in main
 			num_values = 0
-			index_values = 0
-			#print(return_list)
-			for func in return_list:
-				#print(func, line_elem[1])
-				#if(line_elem[1] in funcs):	checking if func name is funcs stack
-				if('void' in func):
-					line_of_code += line_elem[1] + "("
-					index_num_args = funcs.index(line_elem[1]) + 1
-					index_values = line_elem.index("values")
-
-				else:
-					line_of_code += return_list[0][3] +" var  = " + line_elem[1] + "("
-					index_num_args = funcs.index(line_elem[1]) + 1
-					index_values = line_elem.index("values")
-
+			if(line_elem[1] in funcs):	#checking if func name is funcs stack
+				line_of_code += line_elem[1] + "("
+				index_num_args = funcs.index(line_elem[1]) + 1
+				index_values = line_elem.index("values")
+				
 				for i in range(index_values+1,len(line_elem)):
 					num_values += 1
 					if(i == len(line_elem)-1):
@@ -252,5 +246,15 @@ def get_code(filename):
 	code_file_ptr.write("}")	#ending the code with a last }
 
 	code_file_ptr.close()	#closing code file ptr.
-
 	file_ptr.close()	#closing file ptr 
+	
+''' Testing of variable_line
+print(variable_line("int x= 23"))
+print(variable_line("int    x   =   34"))
+print(variable_line("y = 4"))
+print(variable_line("char x"))
+print(variable_line("x"))
+print(variable_line("char x = '3'"))
+print(variable_line("char x = 23"))
+'''
+
